@@ -16,7 +16,7 @@
     #message{margin:0 0 24px;color:#a8adc7;font-size:16px;line-height:1.6;white-space:pre-line}progress{display:block;border:0;border-radius:8px;width:100%;height:10px;overflow:hidden;margin:0 0 24px;accent-color:#ae9dff}
     progress[hidden]{display:none}progress::-webkit-progress-bar{background:#343a53}progress::-webkit-progress-value{background:#ae9dff}progress::-moz-progress-bar{background:#ae9dff}
     #action{border:0;border-radius:12px;min-width:200px;padding:15px 24px;background:#ae9dff;color:#181b2b;font:inherit;font-size:17px;font-weight:600;cursor:pointer}#action:hover{background:#c3b7ff}#action:focus-visible{outline:3px solid #72e6c4;outline-offset:4px}#action[hidden]{display:none}
-    .credit{margin:28px 0 0;font-size:12px;font-weight:400;color:#7a8193}#save-status{position:absolute;right:12px;bottom:8px;z-index:1;background:#181b2be8;border-radius:6px;padding:6px 10px;font-size:12px;color:#a8adc7;pointer-events:none}#save-status:empty{display:none}
+    .credit{margin:28px 0 0;font-size:13px;font-weight:400;line-height:1.7;color:#a8adc7;word-break:keep-all;overflow-wrap:anywhere}.signature{margin:8px 0 0;font-size:12px;font-weight:400;color:#7a8193}#save-status{position:absolute;right:12px;bottom:8px;z-index:1;background:#181b2be8;border-radius:6px;padding:6px 10px;font-size:12px;color:#a8adc7;pointer-events:none}#save-status:empty{display:none}
   </style>
 </head>
 <body>
@@ -28,12 +28,13 @@
         <p id="message">불러오는 중… 0%</p>
         <progress id="progress" value="0" max="1" aria-label="게임 불러오기"></progress>
         <button id="action" type="button" hidden>방송 시작</button>
-        <p class="credit">Made By STAL</p>
+        <p class="credit">본 게임은 soop 스트리머 '꿈틀'의 팬게임 입니다. 무단 도용과 불펌은 삼가해주세요</p>
+        <p class="signature">-개발자 올림-</p>
       </div>
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":78326294,"sha256":"a5610203ffcd6b0f1f312d3ecb127781c59c897484281b536a6cc8540155e220","original":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb","parts":[{"index":0,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-000.bin","bytes":8388608,"sha256":"92f1dd6c6c4676c51ea09f946f55e4b469d80b8dd215bd6ba23c7df5e553ac22"},{"index":1,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-001.bin","bytes":8388608,"sha256":"5edeb5cfbb2ee208c8a246a9b5bf5ae4abd07bb85d01d084c9b0436cb26868da"},{"index":2,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-002.bin","bytes":8388608,"sha256":"8f406a85f750ec0408f8eff611b36ef54c94f258794fdb2c78b75aa7412c9094"},{"index":3,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-003.bin","bytes":8388608,"sha256":"d3a5019040f8bdcd7a1b894606b70c65eca1fd007e6e051bac5994b26f8d93a6"},{"index":4,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-004.bin","bytes":8388608,"sha256":"76e1516838e1060118c799864b03bd7a012cc1a7a15f23131a0773866379105c"},{"index":5,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-005.bin","bytes":8388608,"sha256":"77b830f3a6d197060e47017add8631495bcb59e6ffbcb2798b480a4ce23251a4"},{"index":6,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-006.bin","bytes":8388608,"sha256":"5e2f3d23405ad52ec71d5f885ec001d72cbbb25ddc639c91bef6c884bb33b184"},{"index":7,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-007.bin","bytes":8388608,"sha256":"92cd7d1674377dec79ada0bb9512a9f7a2542f20af7fa659ee28797e89aa6c8c"},{"index":8,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-008.bin","bytes":8388608,"sha256":"0f95e2f7052ef959d3a97ad5c36bb3cc4444229b2a9267402c0847bb0ae3e0d8"},{"index":9,"url":"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb.github8m.part-009.bin","bytes":2828822,"sha256":"c1f60f78687abe31169fc9b1a82d41c5016d605789bf17be5f4d966597163b70"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":78136880,"sha256":"799096444e1c19f34e90e40dc8b5433c71ef0b43f90398c964df11663ba3899a","original":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb","parts":[{"index":0,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-000.bin","bytes":8388608,"sha256":"461f990b5adf8942033175ba31e39d0977c9a6340e70f268cd17c2cfbd348d54"},{"index":1,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-001.bin","bytes":8388608,"sha256":"c99becf4856433b0633c8e7c98e5bc811c1f6495ec78fbc10a63a378556a1c48"},{"index":2,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-002.bin","bytes":8388608,"sha256":"c501be6c49b8c4734f36213a36d9fb311b9d977253b0c40ebff5c2c671dd9516"},{"index":3,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-003.bin","bytes":8388608,"sha256":"8345f70c3a8eb49aa1efc04ab3d39c1de437a88f387fc9582a5561b3907d4fe4"},{"index":4,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-004.bin","bytes":8388608,"sha256":"2973e229fd174ee3f6b65ea9ff62674208bd8d7ac0e20a765e237a0ba73fd0d4"},{"index":5,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-005.bin","bytes":8388608,"sha256":"5869acb9376a6c6c14b4c945ea8f8f2c94951a00a446570bfe18a2f074c103bd"},{"index":6,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-006.bin","bytes":8388608,"sha256":"f5384348dac22b45585b335aa95400c9b0cfad16b32e6f5f6de92a37f8b07c15"},{"index":7,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-007.bin","bytes":8388608,"sha256":"0e3abb03eee35dd38058f985a99e4202a061c25bed17268c86a5014481fd5c3a"},{"index":8,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-008.bin","bytes":8388608,"sha256":"e1ad77d7ad72d9aa9d7935f749ce94ec049049a62406852589aec01fec2a7611"},{"index":9,"url":"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb.github8m.part-009.bin","bytes":2639408,"sha256":"3e8542ff4d9b8bc8ae49c5ac6a2d204f357ca30d0b3200fddc1000a8b8b0239f"}]}}}</script>
   <script>
     (() => {
       "use strict";
@@ -42,9 +43,9 @@
       const reveal=(text,label,handler)=>{message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;};
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/b747ce17220c17b05cfbb00e3a591abf.data.unityweb",
+        dataUrl:"Build/1cc41d8129c800b0faf61836c9450ff2.data.unityweb",
         frameworkUrl:"Build/bfe84ba9b191aa0a639f1a83ef99a865.framework.js.unityweb",
-        codeUrl:"Build/21787e8eeccc647fe4587ee6d0e63990.wasm.unityweb",
+        codeUrl:"Build/3e738b48ae6065dbf6c34c8bce2ca33e.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
@@ -107,7 +108,7 @@
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/f40f348e9a3ca866d866488dc1e54d45.loader.js";
+      loader.src="Build/553c5daf3740ab2a5b856dad7c95fe1c.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
