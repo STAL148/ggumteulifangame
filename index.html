@@ -17,6 +17,7 @@
     progress[hidden]{display:none}progress::-webkit-progress-bar{background:#343a53}progress::-webkit-progress-value{background:#ae9dff}progress::-moz-progress-bar{background:#ae9dff}
     #action{border:0;border-radius:12px;min-width:200px;padding:15px 24px;background:#ae9dff;color:#181b2b;font:inherit;font-size:17px;font-weight:600;cursor:pointer}#action:hover{background:#c3b7ff}#action:focus-visible{outline:3px solid #72e6c4;outline-offset:4px}#action[hidden]{display:none}
     .credit{margin:28px 0 0;font-size:13px;font-weight:400;line-height:1.7;color:#a8adc7;word-break:keep-all;overflow-wrap:anywhere}.signature{margin:8px 0 0;font-size:12px;font-weight:400;color:#7a8193}#save-status{position:absolute;right:12px;bottom:8px;z-index:1;background:#181b2be8;border-radius:6px;padding:6px 10px;font-size:12px;color:#a8adc7;pointer-events:none}#save-status:empty{display:none}
+    #loading-version{position:absolute;right:16px;bottom:12px;font-size:12px;line-height:1;color:#7a8193;pointer-events:none}
   </style>
 </head>
 <body>
@@ -31,10 +32,11 @@
         <p class="credit">본 게임은 soop 스트리머 '꿈틀'의 팬게임 입니다.<br>무단 도용과 불펌은 삼가해주세요</p>
         <p class="signature">-개발자 올림-</p>
       </div>
+      <span id="loading-version">v1.0.0</span>
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":78171253,"sha256":"d04f495fccb29e8da5d21d83ff08c688cd759d5a080ed472766d0f56735a3cab","original":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb","parts":[{"index":0,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-000.bin","bytes":8388608,"sha256":"bb825e5ea2b0f36e39e4f5baf25146f6c56dcfb7da0625b7bf13b29eb3854b07"},{"index":1,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-001.bin","bytes":8388608,"sha256":"e9af78b9f7cffe1be983804c6f77b25bf699c75281955a2b65bcaa8ab790cb9b"},{"index":2,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-002.bin","bytes":8388608,"sha256":"f554847d412a8c813352710c1947b9e224330036fdcc56e2b14f3060ff025370"},{"index":3,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-003.bin","bytes":8388608,"sha256":"050f63b39b55b040c3d8619d972cc395ba484ff72c87d595160106d856c1c8de"},{"index":4,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-004.bin","bytes":8388608,"sha256":"5ced09bea05ee65b43e0fdd5b2eb489c698409bf58597b8b3d5d36791e0e179e"},{"index":5,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-005.bin","bytes":8388608,"sha256":"7d23566ff9a70feb27d2a66766e83dc2ea3a332e460ad3d0f135380c60670658"},{"index":6,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-006.bin","bytes":8388608,"sha256":"3f714d2bd52615a24fb2bf374075f6303887193322061ff0c933d5086fd51e62"},{"index":7,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-007.bin","bytes":8388608,"sha256":"597174741a93c352df214dcd9e3ca6938bdafc2bce80e96335181202e915004a"},{"index":8,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-008.bin","bytes":8388608,"sha256":"86572a8fb7abe03f15f2996dab9b16c46c6da04c129b9ce0058411c172ab8136"},{"index":9,"url":"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb.github8m.part-009.bin","bytes":2673781,"sha256":"200ca7094fc9b03748cb76356f45663b2a71a0a45d7b0d9cc6dba19ab42730d1"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":78172547,"sha256":"ac52919e51bc8a58ed88b41e97aa71201ab27180711dfd54ab3b2ba7de848678","original":"Build/534f2731ad65813855456ac019440461.data.unityweb","parts":[{"index":0,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-000.bin","bytes":8388608,"sha256":"b103945f12aa3763ef0c59ee959516cd2cef19ddd280b3d0a40c1164c5a690cc"},{"index":1,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-001.bin","bytes":8388608,"sha256":"ba22355fcb88c0c7bc09f00b0dbd4e832a4d8ca8d569adee043682f663c6374c"},{"index":2,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-002.bin","bytes":8388608,"sha256":"02e03a226c1af3b6ec1b9c3dd0aff56f6b82fc3ada648a2f2ce41016248d72d0"},{"index":3,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-003.bin","bytes":8388608,"sha256":"b62e6a70caa0c0d7b5633dc836e7069ddc15b6898fc26995219f0c4498528577"},{"index":4,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-004.bin","bytes":8388608,"sha256":"f1be9dd7a38c36eacfeeb3e6c8addf49b7549175e245d145e6aa790b2d7ca8e1"},{"index":5,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-005.bin","bytes":8388608,"sha256":"049d7926f3cefad2bcac3b98c6c1de20b2fb9710e961d848305689e841383a6f"},{"index":6,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-006.bin","bytes":8388608,"sha256":"91bde06bebad0b465b3472927fb371b676b79aa281ec2788752da901d7b06e13"},{"index":7,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-007.bin","bytes":8388608,"sha256":"6c91e0ba4b760898982fc1c09acf6467b33c231268827f13c2c28cdc629987c9"},{"index":8,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-008.bin","bytes":8388608,"sha256":"cc8616884e9f9733d827ef46a71ee01120623ce6c78d6f48184a0cf41cb3024e"},{"index":9,"url":"Build/534f2731ad65813855456ac019440461.data.unityweb.github8m.part-009.bin","bytes":2675075,"sha256":"764982395afdcfebe827dea6d9141e72187cff7e840ca27b4ad61d3518a9432e"}]}}}</script>
   <script>
     (() => {
       "use strict";
@@ -43,13 +45,13 @@
       const reveal=(text,label,handler)=>{message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;};
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/875b1537e2b4eb59d97d5f1e83d959c0.data.unityweb",
+        dataUrl:"Build/534f2731ad65813855456ac019440461.data.unityweb",
         frameworkUrl:"Build/150cd7992cfb3eef073e810dca0d17c2.framework.js.unityweb",
-        codeUrl:"Build/f61e661901bc5f6889fe9a3560beb00b.wasm.unityweb",
+        codeUrl:"Build/51dd471d2c3c7ab2104ddb073a4f9d48.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
-        productVersion:"0.1.0",
+        productVersion:"1.0.0",
         autoSyncPersistentDataPath:false,
         matchWebGLToCanvasSize:true,
         devicePixelRatio:Math.min(window.devicePixelRatio||1,2),
@@ -108,7 +110,7 @@
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/26978a9cc0a682344ea1b0e84027a0fd.loader.js";
+      loader.src="Build/4738cca09483359e960477a214b5ec56.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
