@@ -2,69 +2,33 @@
   "schema": 1,
   "assets": {
     "dataUrl": {
-      "bytes": 78174212,
-      "sha256": "246b027bf66c1fadfe0e825244a198861720f160274bad7a1e55d2c4b840bc1e",
-      "original": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb",
+      "bytes": 81087676,
+      "sha256": "4ff762af98c76ab00755b3aa04ca34868fa40debe4e3c19e7bae5c9078447691",
+      "original": "Build/a371a8a12cd5b2a956faaa6581285b4e.data.unityweb",
       "parts": [
         {
           "index": 0,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-000.bin",
-          "bytes": 8388608,
-          "sha256": "6476c74452e39be0bc051bc6002fc53099beb59c59e52b70d125d1524f249073"
+          "url": "Build/a371a8a12cd5b2a956faaa6581285b4e.data.unityweb.part-000.bin",
+          "bytes": 20971520,
+          "sha256": "7c9ff2349f00fa1eb3b64be79b8f7077feab2b12fd3e58695b4880083fe086d6"
         },
         {
           "index": 1,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-001.bin",
-          "bytes": 8388608,
-          "sha256": "86e4d6745c43b00176f2a071010105d2e96bc2ab8d009318bd4311763acf137f"
+          "url": "Build/a371a8a12cd5b2a956faaa6581285b4e.data.unityweb.part-001.bin",
+          "bytes": 20971520,
+          "sha256": "c0c71d834920f64fb9bd8186ce89a853a5bd1c9f2ee6b9d29668e460479d8908"
         },
         {
           "index": 2,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-002.bin",
-          "bytes": 8388608,
-          "sha256": "43e966e84e26a4113d156109635f9ba30d9a3e3f37b2b2d7d44508d345668b47"
+          "url": "Build/a371a8a12cd5b2a956faaa6581285b4e.data.unityweb.part-002.bin",
+          "bytes": 20971520,
+          "sha256": "fd3821d3ac825b1de5792acbc4211ad4c518c780fb87f1caf84d83c95a5651e4"
         },
         {
           "index": 3,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-003.bin",
-          "bytes": 8388608,
-          "sha256": "4d632767819dfbb63ff9c8c41c5593bbec7c5913117701ecbc6a2b472d7ac405"
-        },
-        {
-          "index": 4,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-004.bin",
-          "bytes": 8388608,
-          "sha256": "ed56fa0bc70cf68f7a2a478205c48f7a20b03c5af9620ad7192a9d99680d2a6f"
-        },
-        {
-          "index": 5,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-005.bin",
-          "bytes": 8388608,
-          "sha256": "235746954e6ed9508b8116ccc51a059242c868de36ec3559215724b6510c2e5c"
-        },
-        {
-          "index": 6,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-006.bin",
-          "bytes": 8388608,
-          "sha256": "ce0d9c7db2a605d3ddc03c048dcc8e294f8f9e57b469e674a7f2c5c70c09d7aa"
-        },
-        {
-          "index": 7,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-007.bin",
-          "bytes": 8388608,
-          "sha256": "ba5b9e78d58d415ad812d9994545a681c643473201f258bd39357dd73ff9a24b"
-        },
-        {
-          "index": 8,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-008.bin",
-          "bytes": 8388608,
-          "sha256": "9e18ff150b729efe27d2f0d6c3a92a4fa333295692063ebefce87c73d7e17a28"
-        },
-        {
-          "index": 9,
-          "url": "Build/0beff6d9ea92ef9c0b5ffb4ece786eae.data.unityweb.github8m.part-009.bin",
-          "bytes": 2676740,
-          "sha256": "76c34ce2e2aa8a6288564ac103c7d4c9f52bad89311ddce2b6e33350f1cb6690"
+          "url": "Build/a371a8a12cd5b2a956faaa6581285b4e.data.unityweb.part-003.bin",
+          "bytes": 18173116,
+          "sha256": "d9ecbdff5c7e861f1c4407744c59ffd709045ceb967ab613d0161cea365fcce8"
         }
       ]
     }
