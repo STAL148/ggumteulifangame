@@ -2,33 +2,33 @@
   "schema": 1,
   "assets": {
     "dataUrl": {
-      "bytes": 80876907,
-      "sha256": "ddffc5bed3962b98ad3d8a6234e45e16f958c6280b366f007426387c110ae915",
-      "original": "Build/54e9c773090007f3c8e1b189465e746f.data.unityweb",
+      "bytes": 80876993,
+      "sha256": "dc109e00628a95bcae701472d30c121c175a564323bbec14f696c2dff03415a0",
+      "original": "Build/78abc73244c8282b01f598a19277f9b7.data.unityweb",
       "parts": [
         {
           "index": 0,
-          "url": "Build/54e9c773090007f3c8e1b189465e746f.data.unityweb.part-000.bin",
+          "url": "Build/78abc73244c8282b01f598a19277f9b7.data.unityweb.part-000.bin",
           "bytes": 20971520,
-          "sha256": "b350aa082ede44312003565551665ae909cf3935953370c3523856ed0fa5ceb4"
+          "sha256": "a62cf518782552ad6397bdd776f4ee97018f2e4a84703b953d0eae62a6c983ae"
         },
         {
           "index": 1,
-          "url": "Build/54e9c773090007f3c8e1b189465e746f.data.unityweb.part-001.bin",
+          "url": "Build/78abc73244c8282b01f598a19277f9b7.data.unityweb.part-001.bin",
           "bytes": 20971520,
-          "sha256": "a1fcdb4d0f01150d6e07831f21f8654f0b3d365905ae60a3c515daee178645d6"
+          "sha256": "3c01a2aec6264b2c2b9fc0f66d8a9376dc1df89d32b833e8008ebdb724b864d3"
         },
         {
           "index": 2,
-          "url": "Build/54e9c773090007f3c8e1b189465e746f.data.unityweb.part-002.bin",
+          "url": "Build/78abc73244c8282b01f598a19277f9b7.data.unityweb.part-002.bin",
           "bytes": 20971520,
-          "sha256": "4cd8aab1bc5fef079319f002a1d5953fe865e2ebf949ed6f21f722b8c2314cd7"
+          "sha256": "ec2a6d325c8eb4ca56555897fe227db775a95efc4315fd6aab4ac2dc66ad190d"
         },
         {
           "index": 3,
-          "url": "Build/54e9c773090007f3c8e1b189465e746f.data.unityweb.part-003.bin",
-          "bytes": 17962347,
-          "sha256": "5431b9b8af39758b37d3e2e5245eebf50b3ff1bbaf9c46c8ad72e042b54e654a"
+          "url": "Build/78abc73244c8282b01f598a19277f9b7.data.unityweb.part-003.bin",
+          "bytes": 17962433,
+          "sha256": "9060f849147f294582c4a4fc8469bb7effdbccf55546a7f0a7fbf5b5bf3be3a3"
         }
       ]
     }
