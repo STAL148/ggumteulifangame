@@ -36,7 +36,7 @@
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80876313,"sha256":"1a527e55ad760020f5e8428e455a1d0ff54aefbe57cb5cbbbbbcee71b56d5b44","original":"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb","parts":[{"index":0,"url":"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb.part-000.bin","bytes":20971520,"sha256":"5bbbcdb326d13ece410b95fc224b4238d6e93656ceb59c7b32bd0a02b73f4f7f"},{"index":1,"url":"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb.part-001.bin","bytes":20971520,"sha256":"cab14c22f1b89883741161a55e64f53a567d9e56913860701d0a7f9e9ed95e53"},{"index":2,"url":"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb.part-002.bin","bytes":20971520,"sha256":"13ef7cb99dc1ca5ce53f13127fa3db150ee697f0b2f61c7b8d70dca3c2f930a4"},{"index":3,"url":"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb.part-003.bin","bytes":17961753,"sha256":"3baea9bca299cebebcd66a0abad018202a814323d63b8e8385f14ba250d44330"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80876453,"sha256":"441a25f2adb7fa02da82c3ed76d95e473dd9884acc703b9497ab3f861e016d10","original":"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb","parts":[{"index":0,"url":"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb.part-000.bin","bytes":20971520,"sha256":"2e5aa5955061eb0c948469c53952aed161d4546e1a9ae36b29f13c4f5937c9ee"},{"index":1,"url":"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb.part-001.bin","bytes":20971520,"sha256":"cab14c22f1b89883741161a55e64f53a567d9e56913860701d0a7f9e9ed95e53"},{"index":2,"url":"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb.part-002.bin","bytes":20971520,"sha256":"13ef7cb99dc1ca5ce53f13127fa3db150ee697f0b2f61c7b8d70dca3c2f930a4"},{"index":3,"url":"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb.part-003.bin","bytes":17961893,"sha256":"0591e62d8e105321a9449b10cc81a42b1e70a265f16ab14027132e39056ac604"}]}}}</script>
   <script>
     (() => {
       "use strict";
@@ -45,9 +45,9 @@
       const reveal=(text,label,handler)=>{message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;};
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/6b047432bad2d24b179d9e64a8d50c6b.data.unityweb",
+        dataUrl:"Build/01a72fa695ab4557e3e98bcc59315319.data.unityweb",
         frameworkUrl:"Build/83e3c5783ed6b12a3ff4f940acc2b495.framework.js.unityweb",
-        codeUrl:"Build/cec957cd76a81991240fa4a0b269ea90.wasm.unityweb",
+        codeUrl:"Build/88cead7dae5e446811159884826e9d13.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
@@ -110,7 +110,7 @@
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/c17d3b451bac8c873957416fdc8c2a01.loader.js";
+      loader.src="Build/ffb97a93bc7f7dc6446a45f4d38ad0f8.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
