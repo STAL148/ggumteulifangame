@@ -4,25 +4,68 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#181b2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="description" content="SOOP 스트리머 꿈틀의 팬게임, 방송은 어려워. 소재를 조합하고 나만의 방송을 준비하세요.">
   <title>방송은 어려워</title>
   <style>
     :root{color-scheme:dark;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;background:#181b2b;color:#f2f0f6}
     *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{display:grid;place-items:center}
-    #game-shell{position:relative;display:grid;place-items:center;width:100%;height:100%;background:#181b2b}
-    #game-shell:fullscreen{width:100vw;height:100vh}#unity-canvas{display:block;width:min(100vw,160vh);height:min(62.5vw,100vh);outline:none;background:#181b2b;touch-action:none}
-    #cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#181b2b;z-index:2;padding:24px}
-    #cover[hidden]{display:none}.intro{width:min(440px,100%);text-align:center}h1{font-size:clamp(30px,5vw,48px);font-weight:650;letter-spacing:-.06em;margin:0 0 20px;color:#72e6c4}
+    #game-shell{
+      --viewport-height:100vh;
+      --safe-top:env(safe-area-inset-top,0px);
+      --safe-right:env(safe-area-inset-right,0px);
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+      --safe-left:env(safe-area-inset-left,0px);
+      --toolbar-height:0px;
+      --top-padding:calc(var(--safe-top) + var(--toolbar-height));
+      --game-width:min(calc(100vw - var(--safe-left) - var(--safe-right)),calc((var(--viewport-height) - var(--top-padding) - var(--safe-bottom)) * 1.6));
+      position:relative;display:grid;place-items:center;width:100%;height:var(--viewport-height);background:#181b2b;
+      padding:var(--top-padding) var(--safe-right) var(--safe-bottom) var(--safe-left);
+    }
+    @supports(height:100dvh){#game-shell{--viewport-height:100dvh}}
+    #unity-canvas{display:block;width:var(--game-width);height:calc(var(--game-width) * .625);outline:none;background:#181b2b;touch-action:none}
+    #fullscreen-toggle{
+      position:absolute;z-index:3;top:calc(var(--safe-top) + 6px);right:calc(var(--safe-right) + 12px);
+      min-height:44px;padding:0 13px;border:1px solid #77719f;border-radius:10px;
+      background:#343a53;color:#f2f0f6;font:600 14px system-ui,sans-serif;cursor:pointer;
+    }
+    #fullscreen-toggle:focus-visible,#fullscreen-help button:focus-visible{outline:3px solid #72e6c4;outline-offset:2px}
+    #game-shell[data-playing] #fullscreen-toggle{display:none}
+    @media(pointer:coarse){
+      #game-shell[data-playing]:not([data-fullscreen]){--toolbar-height:56px}
+      #game-shell[data-playing]:not([data-fullscreen]) #fullscreen-toggle{display:block}
+    }
+    #fullscreen-help{
+      position:absolute;z-index:4;top:calc(var(--safe-top) + 56px);right:calc(var(--safe-right) + 12px);
+      display:flex;gap:10px;align-items:center;max-width:min(360px,calc(100% - var(--safe-right) - var(--safe-left) - 24px));
+      padding:10px 12px;background:#282e45;color:#f2f0f6;border:1px solid #77719f;border-radius:10px;
+      font-size:13px;line-height:1.5;word-break:keep-all;
+    }
+    #fullscreen-help[hidden]{display:none}
+    #fullscreen-help button{flex:none;min-height:36px;padding:0 9px;border:0;border-radius:6px;background:#ae9dff;color:#181b2b;font:inherit;cursor:pointer}
+    #cover{
+      position:absolute;inset:0;display:flex;overflow:auto;background:#181b2b;z-index:2;
+      padding:calc(var(--safe-top) + 56px) max(16px,var(--safe-right)) calc(var(--safe-bottom) + 28px) max(16px,var(--safe-left));
+    }
+    #cover[hidden]{display:none}.intro{width:min(520px,100%);margin:auto;text-align:center}h1{font-size:clamp(30px,5vw,48px);font-weight:650;letter-spacing:-.06em;margin:0 0 20px;color:#72e6c4}
     #message{margin:0 0 24px;color:#a8adc7;font-size:16px;line-height:1.6;white-space:pre-line}progress{display:block;border:0;border-radius:8px;width:100%;height:10px;overflow:hidden;margin:0 0 24px;accent-color:#ae9dff}
     progress[hidden]{display:none}progress::-webkit-progress-bar{background:#343a53}progress::-webkit-progress-value{background:#ae9dff}progress::-moz-progress-bar{background:#ae9dff}
     #action{border:0;border-radius:12px;min-width:200px;padding:15px 24px;background:#ae9dff;color:#181b2b;font:inherit;font-size:17px;font-weight:600;cursor:pointer}#action:hover{background:#c3b7ff}#action:focus-visible{outline:3px solid #72e6c4;outline-offset:4px}#action[hidden]{display:none}
     .credit{margin:28px 0 0;font-size:13px;font-weight:400;line-height:1.7;color:#a8adc7;word-break:keep-all;overflow-wrap:anywhere}.signature{margin:8px 0 0;font-size:12px;font-weight:400;color:#7a8193}#save-status{position:absolute;right:12px;bottom:8px;z-index:1;background:#181b2be8;border-radius:6px;padding:6px 10px;font-size:12px;color:#a8adc7;pointer-events:none}#save-status:empty{display:none}
-    #loading-version{position:absolute;right:16px;bottom:12px;font-size:12px;line-height:1;color:#7a8193;pointer-events:none}
+    .patch-notes{margin:14px 0 0;color:#c9c5df;font-size:12px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+    .patch-notes p{margin:0}
+    #loading-version{position:absolute;right:max(16px,var(--safe-right));bottom:calc(var(--safe-bottom) + 12px);font-size:12px;line-height:1;color:#7a8193;pointer-events:none}
+    @media(max-height:430px){h1,#message,progress{margin-bottom:12px}.credit{margin-top:16px}.patch-notes{margin-top:8px}}
   </style>
 </head>
 <body>
   <main id="game-shell" aria-label="방송은 어려워">
     <canvas id="unity-canvas" width="1280" height="800" tabindex="0" aria-label="방송은 어려워 게임 화면"></canvas>
+    <button id="fullscreen-toggle" type="button" aria-pressed="false">전체화면</button>
+    <div id="fullscreen-help" hidden>
+      <span id="fullscreen-message" role="status"></span>
+      <button id="fullscreen-help-close" type="button" aria-label="전체화면 안내 닫기">닫기</button>
+    </div>
     <section id="cover" aria-live="polite">
       <div class="intro">
         <h1>방송은 어려워</h1>
@@ -31,27 +74,83 @@
         <button id="action" type="button" hidden>방송 시작</button>
         <p class="credit">본 게임은 soop 스트리머 '꿈틀'의 팬게임 입니다.<br>무단 도용과 불펌은 삼가해주세요</p>
         <p class="signature">-개발자 올림-</p>
+        <div class="patch-notes">
+          <p>패치노트 : 이제부터 특정 방송 컨텐츠 계열의 강화 카드가 나옵니다.</p>
+          <p>우측 상단의 전체화면을 눌러. 모바일에서 쾌적한 플레이가 가능합니다.</p>
+        </div>
       </div>
-      <span id="loading-version">v1.0.0</span>
+      <span id="loading-version">v1.0.1</span>
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877404,"sha256":"a41f710e9cbc0e87083bfcc4f23f00eec59cc4b36f7e3cf2c082c0fa73b6e940","original":"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb","parts":[{"index":0,"url":"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb.part-000.bin","bytes":20971520,"sha256":"3fabd5df3d77970431869102528e06693493cc1848c3a374778deb1f9e53b041"},{"index":1,"url":"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb.part-001.bin","bytes":20971520,"sha256":"cab14c22f1b89883741161a55e64f53a567d9e56913860701d0a7f9e9ed95e53"},{"index":2,"url":"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb.part-002.bin","bytes":20971520,"sha256":"13ef7cb99dc1ca5ce53f13127fa3db150ee697f0b2f61c7b8d70dca3c2f930a4"},{"index":3,"url":"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb.part-003.bin","bytes":17962844,"sha256":"a1dc3ef9d4647bdcbd4887a249ec00d27b3b356adac7829455a57787f3e7de9b"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877314,"sha256":"aeff084ce096a091b6e31f4ab2f94c82261018180aaf8e1f3b0c1d4a3c155fed","original":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb","parts":[{"index":0,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-000.bin","bytes":20971520,"sha256":"11eee1aad91af373b218c4e5572b34a1b7996227d8ae6e89b27abd3ec9091e09"},{"index":1,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-001.bin","bytes":20971520,"sha256":"0d1dea42e6ef66f7d96c8e7338220db05bd5dc6bda9a4c9e449d4d015e968973"},{"index":2,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-002.bin","bytes":20971520,"sha256":"6c68cd2b56b35b93f7820b39243fe096b35555fee86dd0820dd20f900e28e3eb"},{"index":3,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-003.bin","bytes":17962754,"sha256":"ad7ae9d79b6afe51716e88ed9c4e538ef1626ecfa2bd1805ee82be933a044116"}]}}}</script>
   <script>
     (() => {
       "use strict";
       const canvas=document.getElementById("unity-canvas"),cover=document.getElementById("cover"),message=document.getElementById("message"),progress=document.getElementById("progress"),action=document.getElementById("action"),saveStatus=document.getElementById("save-status");
+      const shell=document.getElementById("game-shell");
+      const fullscreenToggle=document.getElementById("fullscreen-toggle");
+      const fullscreenHelp=document.getElementById("fullscreen-help");
+      const fullscreenMessage=document.getElementById("fullscreen-message");
       let failed=false,quitting=false;
-      const reveal=(text,label,handler)=>{message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;};
+
+      function isFullscreen(){
+        return (document.fullscreenElement||document.webkitFullscreenElement)===shell;
+      }
+      function syncFullscreen(){
+        const active=isFullscreen();
+        shell.toggleAttribute("data-fullscreen",active);
+        fullscreenToggle.textContent=active?"전체화면 해제":"전체화면";
+        fullscreenToggle.setAttribute("aria-pressed",String(active));
+        if(active)fullscreenHelp.hidden=true;
+      }
+      function explainFullscreen(){
+        const appleMobile=/iPad|iPhone|iPod/.test(navigator.userAgent)||
+          (navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+        const standalone=navigator.standalone===true||window.matchMedia("(display-mode: standalone)").matches;
+        fullscreenHelp.hidden=false;
+        fullscreenMessage.textContent=standalone?"홈 화면 앱으로 열려 있어요.":appleMobile?
+          "Safari에서 공유 → 홈 화면에 추가 → 웹 앱으로 열기를 선택하세요.":
+          "전체화면을 켤 수 없어요. 브라우저에서 전체화면을 허용한 뒤 다시 눌러 주세요.";
+      }
+      async function setFullscreen(enabled){
+        if(enabled===isFullscreen())return;
+        fullscreenHelp.hidden=true;
+        try{
+          if(enabled){
+            // Invoke before awaiting anything so the toolbar click retains its activation.
+            if(shell.requestFullscreen&&document.fullscreenEnabled!==false)
+              await shell.requestFullscreen({navigationUI:"hide"});
+            else if(shell.webkitRequestFullscreen&&document.webkitFullscreenEnabled!==false)
+              await shell.webkitRequestFullscreen();
+            else explainFullscreen();
+          }else if(document.exitFullscreen)await document.exitFullscreen();
+          else if(document.webkitExitFullscreen)await document.webkitExitFullscreen();
+        }catch{
+          explainFullscreen();
+        }
+        syncFullscreen();
+      }
+      window.streamerHardSetFullscreen=setFullscreen;
+      fullscreenToggle.addEventListener("click",()=>setFullscreen(!isFullscreen()));
+      document.getElementById("fullscreen-help-close").addEventListener("click",()=>{fullscreenHelp.hidden=true;});
+      document.addEventListener("fullscreenchange",syncFullscreen);
+      document.addEventListener("webkitfullscreenchange",syncFullscreen);
+      syncFullscreen();
+
+      const reveal=(text,label,handler)=>{
+        delete shell.dataset.playing;
+        message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;
+      };
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/abd659a1be7a837b0fc7e29ff9e9e5ec.data.unityweb",
-        frameworkUrl:"Build/75cca3227c326e91ef1ef52bf63899cb.framework.js.unityweb",
-        codeUrl:"Build/e40809426a944ad4bb653e7045ef912c.wasm.unityweb",
+        dataUrl:"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb",
+        frameworkUrl:"Build/23a09a151ce396d4a53359e9796c5eb9.framework.js.unityweb",
+        codeUrl:"Build/9ee0a2271c704236f824b298d6ce8c3b.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
-        productVersion:"1.0.0",
+        productVersion:"1.0.1",
         autoSyncPersistentDataPath:false,
         matchWebGLToCanvasSize:true,
         devicePixelRatio:Math.min(window.devicePixelRatio||1,2),
@@ -105,12 +204,12 @@
           if(instance)await instance.Quit();
           window.streamerHardInstance=null;
           saveStatus.textContent="";
-          if(document.fullscreenElement)await document.exitFullscreen().catch(()=>{});
+          await setFullscreen(false);
           reveal("저장했어요.","다시 시작",()=>location.reload());
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/3f1b0b9a949e28f6d9b82a410545801b.loader.js";
+      loader.src="Build/2abc5a138bea1044b6e0491195f17a60.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
@@ -120,7 +219,7 @@
         })).then(instance=>{
           if(failed){instance.Quit();return;}
           window.streamerHardInstance=instance;
-          reveal("준비됐어요.","방송 시작",()=>{cover.hidden=true;canvas.focus();});
+          reveal("준비됐어요.","방송 시작",()=>{cover.hidden=true;shell.dataset.playing="";canvas.focus({preventScroll:true});});
         }).catch(fail).finally(releaseChunkBlobs);
       };
       document.body.appendChild(loader);
