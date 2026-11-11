@@ -16,36 +16,25 @@
       --safe-right:env(safe-area-inset-right,0px);
       --safe-bottom:env(safe-area-inset-bottom,0px);
       --safe-left:env(safe-area-inset-left,0px);
-      --toolbar-height:0px;
-      --top-padding:calc(var(--safe-top) + var(--toolbar-height));
-      --game-width:min(calc(100vw - var(--safe-left) - var(--safe-right)),calc((var(--viewport-height) - var(--top-padding) - var(--safe-bottom)) * 1.6));
+      --game-width:min(calc(100vw - var(--safe-left) - var(--safe-right)),calc((var(--viewport-height) - var(--safe-top) - var(--safe-bottom)) * 1.6));
       position:relative;display:grid;place-items:center;width:100%;height:var(--viewport-height);background:#181b2b;
-      padding:var(--top-padding) var(--safe-right) var(--safe-bottom) var(--safe-left);
+      padding:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
     }
     @supports(height:100dvh){#game-shell{--viewport-height:100dvh}}
     #unity-canvas{display:block;width:var(--game-width);height:calc(var(--game-width) * .625);outline:none;background:#181b2b;touch-action:none}
-    #fullscreen-toggle{
-      position:absolute;z-index:3;top:calc(var(--safe-top) + 6px);right:calc(var(--safe-right) + 12px);
-      min-height:44px;padding:0 13px;border:1px solid #77719f;border-radius:10px;
-      background:#343a53;color:#f2f0f6;font:600 14px system-ui,sans-serif;cursor:pointer;
-    }
-    #fullscreen-toggle:focus-visible,#fullscreen-help button:focus-visible{outline:3px solid #72e6c4;outline-offset:2px}
-    #game-shell[data-playing] #fullscreen-toggle{display:none}
-    @media(pointer:coarse){
-      #game-shell[data-playing]:not([data-fullscreen]){--toolbar-height:56px}
-      #game-shell[data-playing]:not([data-fullscreen]) #fullscreen-toggle{display:block}
-    }
+    #fullscreen-help button:focus-visible{outline:3px solid #72e6c4;outline-offset:2px}
     #fullscreen-help{
-      position:absolute;z-index:4;top:calc(var(--safe-top) + 56px);right:calc(var(--safe-right) + 12px);
+      position:absolute;z-index:4;top:calc(var(--safe-top) + 12px);right:calc(var(--safe-right) + 12px);
       display:flex;gap:10px;align-items:center;max-width:min(360px,calc(100% - var(--safe-right) - var(--safe-left) - 24px));
       padding:10px 12px;background:#282e45;color:#f2f0f6;border:1px solid #77719f;border-radius:10px;
       font-size:13px;line-height:1.5;word-break:keep-all;
     }
+    #fullscreen-message{white-space:pre-line}
     #fullscreen-help[hidden]{display:none}
-    #fullscreen-help button{flex:none;min-height:36px;padding:0 9px;border:0;border-radius:6px;background:#ae9dff;color:#181b2b;font:inherit;cursor:pointer}
+    #fullscreen-help button{flex:none;min-height:44px;padding:0 12px;border:0;border-radius:6px;background:#ae9dff;color:#181b2b;font:inherit;cursor:pointer}
     #cover{
       position:absolute;inset:0;display:flex;overflow:auto;background:#181b2b;z-index:2;
-      padding:calc(var(--safe-top) + 56px) max(16px,var(--safe-right)) calc(var(--safe-bottom) + 28px) max(16px,var(--safe-left));
+      padding:calc(var(--safe-top) + 28px) max(16px,var(--safe-right)) calc(var(--safe-bottom) + 28px) max(16px,var(--safe-left));
     }
     #cover[hidden]{display:none}.intro{width:min(520px,100%);margin:auto;text-align:center}h1{font-size:clamp(30px,5vw,48px);font-weight:650;letter-spacing:-.06em;margin:0 0 20px;color:#72e6c4}
     #message{margin:0 0 24px;color:#a8adc7;font-size:16px;line-height:1.6;white-space:pre-line}progress{display:block;border:0;border-radius:8px;width:100%;height:10px;overflow:hidden;margin:0 0 24px;accent-color:#ae9dff}
@@ -61,7 +50,7 @@
 <body>
   <main id="game-shell" aria-label="방송은 어려워">
     <canvas id="unity-canvas" width="1280" height="800" tabindex="0" aria-label="방송은 어려워 게임 화면"></canvas>
-    <button id="fullscreen-toggle" type="button" aria-pressed="false">전체화면</button>
+
     <div id="fullscreen-help" hidden>
       <span id="fullscreen-message" role="status"></span>
       <button id="fullscreen-help-close" type="button" aria-label="전체화면 안내 닫기">닫기</button>
@@ -83,13 +72,13 @@
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877167,"sha256":"9a3fc239f289f805df5e27e8dc5bda39f783290a62fe9a5b398fded53aad324a","original":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb","parts":[{"index":0,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-000.bin","bytes":20971520,"sha256":"c42a5f9e0481578c4211636667ec913b3ce081d238cd74e6f98ab633d6d0ae6c"},{"index":1,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-001.bin","bytes":20971520,"sha256":"7fd75db71962f7d2de53404239699269f006aeefa77549cdf8a2d9da566b60a2"},{"index":2,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-002.bin","bytes":20971520,"sha256":"6f6075896d869a31d08dc0640a046941a560e643bdcc4b0c188ae0ee13073055"},{"index":3,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-003.bin","bytes":17962607,"sha256":"df9308dbffcee05cafaf55ee40e68096980316612a81e05ca2f03acc04d972a8"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877180,"sha256":"098273fb1741a9e98b1d39e6d47c71f51f1abf0f5c46847c66243bd5401738d1","original":"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb","parts":[{"index":0,"url":"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb.part-000.bin","bytes":20971520,"sha256":"17250730eec85d3cb029ce9e99d7c8e47c85a85bf42647567b37ed59cd2f478e"},{"index":1,"url":"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb.part-001.bin","bytes":20971520,"sha256":"0d1dea42e6ef66f7d96c8e7338220db05bd5dc6bda9a4c9e449d4d015e968973"},{"index":2,"url":"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb.part-002.bin","bytes":20971520,"sha256":"6c68cd2b56b35b93f7820b39243fe096b35555fee86dd0820dd20f900e28e3eb"},{"index":3,"url":"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb.part-003.bin","bytes":17962620,"sha256":"dd4efe85bfef7065b7148b7ec12d1acedbe256a48fa5f2b819004978185f5bf1"}]}}}</script>
   <script>
     (() => {
       "use strict";
       const canvas=document.getElementById("unity-canvas"),cover=document.getElementById("cover"),message=document.getElementById("message"),progress=document.getElementById("progress"),action=document.getElementById("action"),saveStatus=document.getElementById("save-status");
       const shell=document.getElementById("game-shell");
-      const fullscreenToggle=document.getElementById("fullscreen-toggle");
+
       const fullscreenHelp=document.getElementById("fullscreen-help");
       const fullscreenMessage=document.getElementById("fullscreen-message");
       let failed=false,quitting=false;
@@ -98,11 +87,7 @@
         return (document.fullscreenElement||document.webkitFullscreenElement)===shell;
       }
       function syncFullscreen(){
-        const active=isFullscreen();
-        shell.toggleAttribute("data-fullscreen",active);
-        fullscreenToggle.textContent=active?"전체화면 해제":"전체화면";
-        fullscreenToggle.setAttribute("aria-pressed",String(active));
-        if(active)fullscreenHelp.hidden=true;
+        if(isFullscreen())fullscreenHelp.hidden=true;
       }
       function explainFullscreen(){
         const appleMobile=/iPad|iPhone|iPod/.test(navigator.userAgent)||
@@ -110,7 +95,7 @@
         const standalone=navigator.standalone===true||window.matchMedia("(display-mode: standalone)").matches;
         fullscreenHelp.hidden=false;
         fullscreenMessage.textContent=standalone?"홈 화면 앱으로 열려 있어요.":appleMobile?
-          "Safari에서 공유 → 홈 화면에 추가 → 웹 앱으로 열기를 선택하세요.":
+          "Safari에서 공유 → 홈 화면에 추가 → 웹 앱으로 열기 → 추가를 선택하세요. 홈 화면에 생긴 아이콘으로 열면 주소창 없이 플레이할 수 있어요.\n잠깐 가리려면 Safari 페이지 메뉴 → 도구 막대 가리기를 선택하세요.":
           "전체화면을 켤 수 없어요. 브라우저에서 전체화면을 허용한 뒤 다시 눌러 주세요.";
       }
       async function setFullscreen(enabled){
@@ -132,21 +117,23 @@
         syncFullscreen();
       }
       window.streamerHardSetFullscreen=setFullscreen;
-      fullscreenToggle.addEventListener("click",()=>setFullscreen(!isFullscreen()));
-      document.getElementById("fullscreen-help-close").addEventListener("click",()=>{fullscreenHelp.hidden=true;});
+      document.getElementById("fullscreen-help-close").addEventListener("click",()=>{
+        fullscreenHelp.hidden=true;
+        canvas.focus({preventScroll:true});
+      });
       document.addEventListener("fullscreenchange",syncFullscreen);
       document.addEventListener("webkitfullscreenchange",syncFullscreen);
       syncFullscreen();
 
       const reveal=(text,label,handler)=>{
-        delete shell.dataset.playing;
+        fullscreenHelp.hidden=true;
         message.textContent=text;progress.hidden=true;action.textContent=label;action.onclick=handler;action.hidden=false;cover.hidden=false;
       };
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb",
+        dataUrl:"Build/c35fbe8679ff3c467e2549c55c697045.data.unityweb",
         frameworkUrl:"Build/23a09a151ce396d4a53359e9796c5eb9.framework.js.unityweb",
-        codeUrl:"Build/1f3bc43b30090dee1873df4cc8e06df3.wasm.unityweb",
+        codeUrl:"Build/a7f2e89838e2d9ff3dd6912e5c6e4e2a.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
@@ -209,7 +196,7 @@
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/180c59ee652c4c51550e9b7dcc081826.loader.js";
+      loader.src="Build/9f1b681ab4de2ee82a71ba9348ce914c.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
@@ -219,7 +206,7 @@
         })).then(instance=>{
           if(failed){instance.Quit();return;}
           window.streamerHardInstance=instance;
-          reveal("준비됐어요.","방송 시작",()=>{cover.hidden=true;shell.dataset.playing="";canvas.focus({preventScroll:true});});
+          reveal("준비됐어요.","방송 시작",()=>{cover.hidden=true;canvas.focus({preventScroll:true});});
         }).catch(fail).finally(releaseChunkBlobs);
       };
       document.body.appendChild(loader);
