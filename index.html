@@ -76,14 +76,14 @@
         <p class="signature">-개발자 올림-</p>
         <div class="patch-notes">
           <p>패치노트 : 이제부터 특정 방송 컨텐츠 계열의 강화 카드가 나옵니다.</p>
-          <p>우측 상단의 전체화면을 눌러. 모바일에서 쾌적한 플레이가 가능합니다.</p>
+          <p>우측 상단의 옵션에서 전체화면 클릭시. 모바일에서도 쾌적한 플레이가 가능합니다.</p>
         </div>
       </div>
       <span id="loading-version">v1.0.1</span>
     </section>
     <output id="save-status" aria-live="polite"></output>
   </main>
-  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877314,"sha256":"aeff084ce096a091b6e31f4ab2f94c82261018180aaf8e1f3b0c1d4a3c155fed","original":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb","parts":[{"index":0,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-000.bin","bytes":20971520,"sha256":"11eee1aad91af373b218c4e5572b34a1b7996227d8ae6e89b27abd3ec9091e09"},{"index":1,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-001.bin","bytes":20971520,"sha256":"0d1dea42e6ef66f7d96c8e7338220db05bd5dc6bda9a4c9e449d4d015e968973"},{"index":2,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-002.bin","bytes":20971520,"sha256":"6c68cd2b56b35b93f7820b39243fe096b35555fee86dd0820dd20f900e28e3eb"},{"index":3,"url":"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb.part-003.bin","bytes":17962754,"sha256":"ad7ae9d79b6afe51716e88ed9c4e538ef1626ecfa2bd1805ee82be933a044116"}]}}}</script>
+  <script type="application/json" id="streamer-chunks">{"schema":1,"assets":{"dataUrl":{"bytes":80877167,"sha256":"9a3fc239f289f805df5e27e8dc5bda39f783290a62fe9a5b398fded53aad324a","original":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb","parts":[{"index":0,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-000.bin","bytes":20971520,"sha256":"c42a5f9e0481578c4211636667ec913b3ce081d238cd74e6f98ab633d6d0ae6c"},{"index":1,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-001.bin","bytes":20971520,"sha256":"7fd75db71962f7d2de53404239699269f006aeefa77549cdf8a2d9da566b60a2"},{"index":2,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-002.bin","bytes":20971520,"sha256":"6f6075896d869a31d08dc0640a046941a560e643bdcc4b0c188ae0ee13073055"},{"index":3,"url":"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb.part-003.bin","bytes":17962607,"sha256":"df9308dbffcee05cafaf55ee40e68096980316612a81e05ca2f03acc04d972a8"}]}}}</script>
   <script>
     (() => {
       "use strict";
@@ -144,9 +144,9 @@
       };
       const fail=(error)=>{if(failed)return;failed=true;releaseChunkBlobs();console.error(error);reveal("게임을 불러오지 못했어요.","다시 불러오기",()=>location.reload());};
       const config={
-        dataUrl:"Build/4193c8cab2c08f6cc8d80cf123d1d900.data.unityweb",
+        dataUrl:"Build/e8c85b160655eac0b52443d830b5be3d.data.unityweb",
         frameworkUrl:"Build/23a09a151ce396d4a53359e9796c5eb9.framework.js.unityweb",
-        codeUrl:"Build/9ee0a2271c704236f824b298d6ce8c3b.wasm.unityweb",
+        codeUrl:"Build/1f3bc43b30090dee1873df4cc8e06df3.wasm.unityweb",
         streamingAssetsUrl:"StreamingAssets",
         companyName:"LocalWorkshop",
         productName:"방송은 어려워",
@@ -209,7 +209,7 @@
         }catch(error){console.error(error);reveal("저장했어요. 이 탭을 닫아도 괜찮아요.","다시 시작",()=>location.reload());}
       };
       const loader=document.createElement("script");
-      loader.src="Build/2abc5a138bea1044b6e0491195f17a60.loader.js";
+      loader.src="Build/180c59ee652c4c51550e9b7dcc081826.loader.js";
       loader.onerror=()=>fail("Unity loader download failed");
       loader.onload=()=>{
         if(typeof createUnityInstance!=="function"){fail("Unity loader is unavailable");return;}
